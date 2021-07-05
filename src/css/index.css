@@ -32,12 +32,12 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #EAF0F5;
+  background-color: #eaf0f5;
   -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
           box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
   border-radius: 80px;
-  width: 1200px;
-  height: 800px;
+  width: 1300px;
+  height: 880px;
 }
 
 .container .wrap .wrap_kiri {
@@ -189,7 +189,7 @@ body {
           align-items: center;
   margin-top: 2rem;
   width: 90%;
-  height: 300px;
+  height: 380px;
   border-radius: 80px;
   -webkit-transition: 0.5s all ease;
   transition: 0.5s all ease;
@@ -209,7 +209,12 @@ body {
   font-weight: 300;
   -webkit-transition: 0.5s all ease;
   transition: 0.5s all ease;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+}
+
+.container .wrap .wrap_kiri .cuaca .info__cuaca .nama__cuaca {
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
 }
 
 .container .wrap .wrap_kiri .cuaca .info__cuaca .info__lain {
@@ -240,6 +245,7 @@ body {
 
 .container .wrap .wrap_kiri .cuaca .info__cuaca .info__lain .info__lainlain {
   margin-top: 0.5rem;
+  margin-bottom: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -266,5 +272,145 @@ body {
   -webkit-box-flex: 0.60;
       -ms-flex: 0.60;
           flex: 0.60;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.container .wrap .wrap_kanan .chart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 0.60;
+      -ms-flex: 0.60;
+          flex: 0.60;
+  width: 100%;
+}
+
+.container .wrap .wrap_kanan .cuaca__lainHari {
+  -webkit-box-flex: 0.40;
+      -ms-flex: 0.40;
+          flex: 0.40;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.container .wrap .wrap_kanan .cuaca__lainHari .card {
+  width: 180px;
+  height: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 40px;
+  background-color: #9DC8D7;
+  -webkit-transition: 0.5s all ease;
+  transition: 0.5s all ease;
+}
+
+.container .wrap .wrap_kanan .cuaca__lainHari .card img {
+  width: 40%;
+  margin-top: 1rem;
+}
+
+.container .wrap .wrap_kanan .cuaca__lainHari .card h2 {
+  font-size: 1rem;
+  margin-top: 2rem;
+  color: #EAF0F5;
+  font-weight: 400;
+  border-bottom: 1px #EAF0F5 solid;
+}
+
+.container .wrap .wrap_kanan .cuaca__lainHari .card p {
+  color: #EAF0F5;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 300;
+  -webkit-transition: 0.5s all ease;
+  transition: 0.5s all ease;
+  margin-bottom: 0;
+}
+
+.container .wrap .wrap_kanan .cuaca__lainHari .card:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    height: unset;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .container .wrap {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 10rem 2rem;
+    width: 100%;
+    height: auto;
+    padding-bottom: 10rem;
+  }
+  .container .wrap .wrap_kiri {
+    border-right: unset;
+    width: 100%;
+  }
+  .container .wrap .wrap_kanan {
+    height: 100%;
+    width: 100%;
+  }
+  .container .wrap .wrap_kanan .cuaca__lainHari {
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 2rem;
+  }
+  .container .wrap .wrap_kanan .cuaca__lainHari .card {
+    margin-bottom: 2rem;
+  }
 }
 /*# sourceMappingURL=index.css.map */

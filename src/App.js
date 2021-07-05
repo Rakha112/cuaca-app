@@ -1,27 +1,17 @@
-import React, {useState} from 'react';
-import moment from "moment";
-import awan from './3d weather icons/sun/26.png'
-import {IconButton} from '@material-ui/core'
-import LocationSearchingRoundedIcon from '@material-ui/icons/LocationSearchingRounded';
-import axios from 'axios';
+import React, {useState} from 'react'
+import moment from 'moment/min/moment-with-locales';
+import { IconButton } from '@material-ui/core'
+import LocationSearchingRoundedIcon from '@material-ui/icons/LocationSearchingRounded'
+import { getWeather, getForecast } from './data/Weather'
+import InfoCuaca from './components/InfoCuaca'
+import { getImgSrc } from './data/dataGambar'
+import Card from './components/Card'
+import Chart from './components/Chart'
 
 function App() {
-const API_KEY = 'ea6a3ea8ea54930d997f4fdf132e82ff';
-const URL = 'https://api.openweathermap.org/data/2.5/weather?';
-
-const getWeather = async (kota) => {
-    try {
-        const {data} = await axios.get(URL + `q=${kota},ID&appid=${API_KEY}&units=metric`)
-        console.log(data)
-        return data
-     } catch(err){
-         throw err
-     }
-}
-
   const buatTanggal = (d) => {
-    let months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-    let myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+    let months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+    let myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
     let hari = myDays[d.getDay()]
     let tanggal = d.getDate()
     let bulan = months[d.getMonth()]
@@ -32,11 +22,17 @@ const getWeather = async (kota) => {
 
   const [lokasi, setLokasi] = useState('')
   const [lokDis, setLokDis] = useState('')
-  const [suhu , setSuhu] = useState('')
-  const [humi , setHumi] = useState('')
-  const [angin , setAngin] = useState('')
-  const [terbit, setTerbit] = useState('')
-  const [terbenam, setTerbenam] = useState('')
+  const [info , setInfo] = useState({
+    suhu: "",
+    humi:"",
+    angin:"",
+    terbit:"",
+    terbenam: "",
+    cuaca: "-",
+    daily:"",
+    labels: "",
+    dailySuhu: ""
+  })
 
   const onSubmit = e => {
       e.preventDefault()
@@ -48,24 +44,33 @@ const getWeather = async (kota) => {
   const getData = async () => {
     try{
       const data = await getWeather(lokasi)
-      setSuhu(data.main.temp)
-      setHumi(data.main.humidity)
-      setAngin(data.wind.speed)
-      let terbit= moment.unix(data.sys.sunrise).format("h:mm A")
-      let terbenam= moment.unix(data.sys.sunset).format("h:mm A")
-      setTerbit(terbit)
-      setTerbenam(terbenam)
-      console.log(data)
-      console.log(data.status)
+      let lat = data.coord.lat
+      let lon = data.coord.lon
+      const data2 = await getForecast(lat,lon)
+      setInfo({
+        suhu: data.main.temp,
+        humi: data.main.humidity,
+        angin: data.wind.speed,
+        terbit: moment.unix(data.sys.sunrise).format("h:mm A"),
+        terbenam: moment.unix(data.sys.sunset).format("h:mm A"),
+        cuaca: data.weather[0].main,
+        daily: data2.data.daily.slice(1, 5),
+        labels: data2.data.daily.map ((d) =>{
+          return moment.unix(d.dt).locale('id').format('Do MMMM')
+        }),
+        dailySuhu: data2.data.daily.map ((dSuhu) => {
+          return dSuhu.temp.day
+        })
+      })
+
     } catch(err){
-      // console.log(err)
+      console.log(err)
     }
   }
 
   
   return (
     <div className="container">
-      
       <div className="wrap">
         <div className="wrap_kiri">
           <div className="cari">
@@ -80,33 +85,23 @@ const getWeather = async (kota) => {
           <p>{buatTanggal(new Date())}</p>
           <div className="cuaca">
             <div className="gambar__cuaca">
-              <img src={awan} alt="" />
+              <img src={getImgSrc(info.cuaca)} alt="" />
             </div>
-            <div className="info__cuaca">
-              <h2>SUHU</h2>
-              <p>{suhu ? suhu : '-'}&deg;C</p>
-              <div className="info__lain">
-                <div className="info__lainlain">
-                  <h2>Humidity</h2>
-                  <p>{humi ? humi : '-'}%</p>
-                </div>
-                <div className="info__lainlain">
-                  <h2>Kecepatan Angin</h2>
-                  <p>{angin ? angin : '-'}m/s</p>
-                </div>
-                <div className="info__lainlain">
-                  <h2>Terbit</h2>
-                  <p>{terbit ? terbit : '-'}</p>
-                </div>
-                <div className="info__lainlain">
-                  <h2>Terbenam</h2>
-                  <p>{terbenam ? terbenam : '-'}</p>
-                </div>
-              </div>
-            </div>
+          <InfoCuaca props={info}/>
           </div>
         </div>
         <div className="wrap_kanan">
+          <div className="chart">
+            <Chart labels={info.labels} suhu={info.dailySuhu}/>
+          </div>
+          <div className="cuaca__lainHari">
+            { info.daily ? info.daily.map((d,index) =>{
+              return (
+                <Card key={index} props={d}/>
+                )
+              }) : null
+            }
+          </div>
         </div>
       </div>
     </div>

@@ -20,12 +20,12 @@ body {
     .wrap {
         display: flex;
         align-items: center;
-        background-color: #EAF0F5;
+        background-color: #eaf0f5;
         box-shadow: 0px 0px 20px hsla(0, 0, 0, 0.3);
         border-radius: 80px;
         // border: 1px solid black;
-        width: 1200px;
-        height: 800px;
+        width: 1300px;
+        height: 880px;
         .wrap_kiri {
             border-radius: 80px;
             border-right: 1px #96bfce solid;
@@ -100,7 +100,7 @@ body {
                     align-items: center;
                     margin-top: 2rem;
                     width: 90%;
-                    height: 300px;
+                    height: 380px;
                     border-radius: 80px;
                     transition: 0.5s all ease;
                     h2 {
@@ -115,7 +115,11 @@ body {
                         font-size: 4rem;
                         font-weight: 300;
                         transition: 0.5s all ease;
-                        margin-bottom: 1rem;
+                        margin-bottom: 0;
+                    }
+                    .nama__cuaca {
+                        font-size: 2rem;
+                        margin: 0 0 1rem 0;
                     }
                     .info__lain {
                         display: grid;
@@ -138,6 +142,7 @@ body {
                         }
                         .info__lainlain {
                             margin-top: 0.5rem;
+                            margin-bottom: 1rem;
                             display: flex;
                             flex-direction: column;
                             align-items: center;
@@ -154,8 +159,93 @@ body {
         }
         .wrap_kanan {
             flex: 0.60;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            .chart {
+                display: flex;
+                align-items: center;
+                flex: 0.60;
+                width: 100%;
+            }
+            .cuaca__lainHari {
+                flex: 0.40;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                padding: 0 1rem;
+                .card {
+                    width: 180px;
+                    height: 250px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 40px;
+                    background-color: #9DC8D7;
+                    transition: 0.5s all ease;
+                    img {
+                        width: 40%;
+                        margin-top: 1rem;
+                    }
+                    h2 {
+                        font-size: 1rem;
+                        margin-top: 2rem;
+                        color: #EAF0F5;
+                        font-weight: 400;
+                        border-bottom: 1px #EAF0F5 solid;
+                    }
+                    p {
+                        color: #EAF0F5;
+                        margin-top: 1rem;
+                        font-size: 1.5rem;
+                        font-weight: 300;
+                        transition: 0.5s all ease;
+                        margin-bottom: 0;
+                    }
+                }
+                .card:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0px 0px 20px hsla(0, 0, 0, 0.3);
+                }
+            }
         }
         
     }
+}
 
+@media screen and (max-width: 1000px) {
+    .container {
+        height: unset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .wrap {
+            flex-direction: column;
+            margin: 10rem 2rem;
+            // border: 1px solid black;
+            width: 100%;
+            height: auto;
+            padding-bottom: 10rem;
+            .wrap_kiri {
+                border-right: unset;
+                width: 100%;
+            }
+            .wrap_kanan {
+                height: 100%;
+                width: 100%;
+                .cuaca__lainHari {
+                    display: grid;
+                    justify-content: center;
+                    margin-top: 2rem;
+                    .card {
+                        margin-bottom: 2rem;
+                    }
+                }
+            }
+        }
+    }
 }
