@@ -225,14 +225,22 @@ body {
         align-items: center;
         .wrap {
             flex-direction: column;
-            margin: 10rem 2rem;
+            margin: 3rem 1rem;
             // border: 1px solid black;
+            border-radius: 40px;
             width: 100%;
             height: auto;
-            padding-bottom: 10rem;
+            padding-bottom: 3rem;
             .wrap_kiri {
                 border-right: unset;
                 width: 100%;
+                .cari {
+                   input {
+                       padding: 10px 50px 10px 5px;
+                       border: none;
+                       border-radius: 50px;
+                   }
+                }
             }
             .wrap_kanan {
                 height: 100%;

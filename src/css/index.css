@@ -388,14 +388,20 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    margin: 10rem 2rem;
+    margin: 3rem 1rem;
+    border-radius: 40px;
     width: 100%;
     height: auto;
-    padding-bottom: 10rem;
+    padding-bottom: 3rem;
   }
   .container .wrap .wrap_kiri {
     border-right: unset;
     width: 100%;
+  }
+  .container .wrap .wrap_kiri .cari input {
+    padding: 10px 50px 10px 5px;
+    border: none;
+    border-radius: 50px;
   }
   .container .wrap .wrap_kanan {
     height: 100%;
