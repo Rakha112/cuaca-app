@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/cuaca-app/static/css/main.4de9aa16.chunk.css",
+    "main.css": "/cuaca-app/static/css/main.76919e88.chunk.css",
     "main.js": "/cuaca-app/static/js/main.5d0467cf.chunk.js",
     "main.js.map": "/cuaca-app/static/js/main.5d0467cf.chunk.js.map",
     "runtime-main.js": "/cuaca-app/static/js/runtime-main.b3ec2b26.js",
@@ -8,7 +8,7 @@
     "static/js/2.a5b5ef9e.chunk.js": "/cuaca-app/static/js/2.a5b5ef9e.chunk.js",
     "static/js/2.a5b5ef9e.chunk.js.map": "/cuaca-app/static/js/2.a5b5ef9e.chunk.js.map",
     "index.html": "/cuaca-app/index.html",
-    "static/css/main.4de9aa16.chunk.css.map": "/cuaca-app/static/css/main.4de9aa16.chunk.css.map",
+    "static/css/main.76919e88.chunk.css.map": "/cuaca-app/static/css/main.76919e88.chunk.css.map",
     "static/js/2.a5b5ef9e.chunk.js.LICENSE.txt": "/cuaca-app/static/js/2.a5b5ef9e.chunk.js.LICENSE.txt",
     "static/media/17.a366977d.png": "/cuaca-app/static/media/17.a366977d.png",
     "static/media/23.9183a0c4.png": "/cuaca-app/static/media/23.9183a0c4.png",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.b3ec2b26.js",
     "static/js/2.a5b5ef9e.chunk.js",
-    "static/css/main.4de9aa16.chunk.css",
+    "static/css/main.76919e88.chunk.css",
     "static/js/main.5d0467cf.chunk.js"
   ]
 }
