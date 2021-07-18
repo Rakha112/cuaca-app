@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cuaca-app/static/css/main.7f53f436.chunk.css",
-    "main.js": "/cuaca-app/static/js/main.e089739f.chunk.js",
-    "main.js.map": "/cuaca-app/static/js/main.e089739f.chunk.js.map",
+    "main.js": "/cuaca-app/static/js/main.594d19da.chunk.js",
+    "main.js.map": "/cuaca-app/static/js/main.594d19da.chunk.js.map",
     "runtime-main.js": "/cuaca-app/static/js/runtime-main.b3ec2b26.js",
     "runtime-main.js.map": "/cuaca-app/static/js/runtime-main.b3ec2b26.js.map",
     "static/js/2.a5b5ef9e.chunk.js": "/cuaca-app/static/js/2.a5b5ef9e.chunk.js",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.b3ec2b26.js",
     "static/js/2.a5b5ef9e.chunk.js",
     "static/css/main.7f53f436.chunk.css",
-    "static/js/main.e089739f.chunk.js"
+    "static/js/main.594d19da.chunk.js"
   ]
 }
