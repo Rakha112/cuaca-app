@@ -220,7 +220,7 @@ body {
   }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 999px) {
   .container {
     height: unset;
     display: flex;
@@ -228,7 +228,7 @@ body {
     align-items: center;
     .wrap {
       flex-direction: column;
-      margin: 3rem 1rem;
+      margin: 0;
       // border: 1px solid black;
       border-radius: 40px;
       width: 100%;
@@ -258,5 +258,11 @@ body {
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  body {
+    transform: scale(0.7);
   }
 }
