@@ -4,7 +4,7 @@ This is a project for weather information for city in Indonesia
 
 ## Table of contents
 
-- [Screenshot](#screenshot)
+- [Demo](#Demo)
 - [My process](#my-process)
   - [Built with](#built-with)
 - [Author](#author)
@@ -12,7 +12,7 @@ This is a project for weather information for city in Indonesia
 
 ## Demo
 
-![](./src/COBA-CUACA-APP.mp4)
+![](./src/COBA-CUACA-APP.gif)
 
 ## My process
 
