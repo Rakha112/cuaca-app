@@ -9,7 +9,6 @@ This is a project for weather information for city in Indonesia
   - [Built with](#built-with)
 - [Author](#author)
 
-
 ## Demo
 
 ![](./src/COBA-CUACA-APP.gif)

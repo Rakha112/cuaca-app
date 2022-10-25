@@ -1,0 +1,120 @@
+@use "../util/" as *;
+
+.cuaca__info {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .cuaca__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 200px;
+    padding: 20px;
+    background-color: #9dc8d7;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+    animation: bounce 3s infinite ease-in-out;
+    @include breakpoint(large) {
+      height: 150px;
+      width: 150px;
+    }
+    @include breakpoint(xlarge) {
+      height: 200px;
+      width: 200px;
+    }
+    @keyframes bounce {
+      0% {
+        transform: translateY(-2px);
+      }
+      50% {
+        transform: translateY(5px);
+      }
+      100% {
+        transform: translateY(-2px);
+      }
+    }
+    img {
+      width: 100%;
+      transition: all 0.5s ease;
+    }
+  }
+  .cuaca__icon:hover {
+    background-color: #96bfce;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  }
+  .cuaca__info__container {
+    background-color: #9dc8d7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    width: 90%;
+    height: 380px;
+    border-radius: rem(40);
+    transition: 0.5s all ease;
+    @include breakpoint(large) {
+      border-radius: rem(80);
+      width: 90%;
+      height: 100%;
+      margin-top: 1rem;
+    }
+    @include breakpoint(xlarge) {
+      width: 90%;
+      height: 380px;
+      margin-top: 2rem;
+    }
+    h2 {
+      margin-top: 2rem;
+      color: #eaf0f5;
+      font-weight: 400;
+      border-bottom: 1px #eaf0f5 solid;
+    }
+    p {
+      color: #eaf0f5;
+      margin-top: 1rem;
+      font-size: 4rem;
+      font-weight: 300;
+      transition: 0.5s all ease;
+      margin-bottom: 0;
+    }
+    .cuaca__info__nama {
+      font-size: 2rem;
+      margin: 0 0 1rem 0;
+    }
+    .cuaca__info__keterangan {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      h2 {
+        font-size: 1rem;
+        margin-top: 0rem;
+        color: #eaf0f5;
+        font-weight: 400;
+        border-bottom: 1px #eaf0f5 solid;
+      }
+      p {
+        color: #eaf0f5;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        font-weight: 300;
+        transition: 0.5s all ease;
+      }
+      .keterangan {
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+  .cuaca__info__container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  }
+}

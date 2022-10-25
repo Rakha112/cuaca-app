@@ -1,5 +1,6 @@
 import React from "react";
-import moment from "moment/min/moment-with-locales";
+import moment from "moment";
+import "moment/locale/id";
 import { getImgSrc } from "../data/dataGambar";
 
 const Card = ({ props }) => {

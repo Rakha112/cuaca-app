@@ -1,0 +1,156 @@
+@use "../util/" as *;
+
+.cuaca {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include breakpoint(large) {
+    height: 100vh;
+  }
+  &__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 5rem auto;
+    width: 90vw;
+    height: 100%;
+    background-color: var(--warna-card);
+    border-radius: rem(40);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    @include breakpoint(large) {
+      border-radius: rem(80);
+      max-width: rem(1100);
+      max-height: rem(700);
+      flex-direction: row;
+    }
+    @include breakpoint(xlarge) {
+      max-width: rem(1300);
+      max-height: rem(800);
+    }
+    &__pertama {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      border-radius: unset;
+      border-right: unset;
+      @include breakpoint(large) {
+        border-radius: 80px;
+        border-right: 1px #96bfce solid;
+        flex: 0.4;
+      }
+      h1 {
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-top: 1rem;
+        color: var(--warna-dalem);
+      }
+      p {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.25rem;
+        color: var(--warna-dalem);
+        @include breakpoint(large) {
+          margin-bottom: 1rem;
+        }
+        @include breakpoint(xlarge) {
+          margin-bottom: 2rem;
+        }
+      }
+    }
+    &__kedua {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      @include breakpoint(large) {
+        flex: 0.6;
+      }
+      .cuaca__chart {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin: 2rem 0;
+        @include breakpoint(large) {
+          max-width: rem(700);
+        }
+        @include breakpoint(xlarge) {
+          width: 100%;
+        }
+      }
+      .cuaca__hari {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 1rem;
+        @include breakpoint(large) {
+          flex-direction: row;
+        }
+        .card {
+          width: 280px;
+          height: 300px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          border-radius: 40px;
+          background-color: #9dc8d7;
+          transition: 0.5s all ease;
+          margin-bottom: 2rem;
+          @include breakpoint(large) {
+            text-align: center;
+            width: 160px;
+            height: 230px;
+            margin-bottom: 0rem;
+            padding: 1rem;
+          }
+          @include breakpoint(xlarge) {
+            text-align: center;
+            width: 180px;
+            height: 250px;
+            margin-bottom: 0rem;
+            padding: 1rem;
+          }
+          img {
+            width: 40%;
+            margin-top: 1rem;
+          }
+          h2 {
+            font-size: 1rem;
+            margin-top: 2rem;
+            color: #eaf0f5;
+            font-weight: 400;
+            border-bottom: 1px #eaf0f5 solid;
+          }
+          p {
+            color: #eaf0f5;
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: 0.5s all ease;
+            margin-bottom: 0;
+            @include breakpoint(large) {
+              margin-top: 0.5rem;
+            }
+            @include breakpoint(xlarge) {
+              margin-top: 1rem;
+            }
+          }
+        }
+        .card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+        }
+      }
+    }
+  }
+}

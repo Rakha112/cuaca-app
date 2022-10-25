@@ -1,14 +1,25 @@
 import React, { useState } from "react";
-import moment from "moment/min/moment-with-locales";
-import { IconButton } from "@material-ui/core";
-import LocationSearchingRoundedIcon from "@material-ui/icons/LocationSearchingRounded";
-import { getWeather, getForecast } from "./data/Weather";
-import InfoCuaca from "./components/InfoCuaca";
-import { getImgSrc } from "./data/dataGambar";
-import Card from "./components/Card";
+import "../src/css/pages/app.css";
 import Chart from "./components/Chart";
-
+import InfoCuaca from "./components/InfoCuaca";
+import Search from "./components/Search";
+import moment from "moment";
+import Card from "../src/components/Card";
+import { getWeather, getForecast } from "../src/data/Weather";
 function App() {
+  const [lokasi, setLokasi] = useState("");
+  const [lokDis, setLokDis] = useState("");
+  const [info, setInfo] = useState({
+    suhu: "",
+    humi: "",
+    angin: "",
+    terbit: "",
+    terbenam: "",
+    cuaca: "-",
+    daily: "",
+    labels: "",
+    dailySuhu: "",
+  });
   const buatTanggal = (d) => {
     let months = [
       "Januari",
@@ -40,28 +51,6 @@ function App() {
 
     return `${hari} ${tanggal} ${bulan} ${tahun}`;
   };
-
-  const [lokasi, setLokasi] = useState("");
-  const [lokDis, setLokDis] = useState("");
-  const [info, setInfo] = useState({
-    suhu: "",
-    humi: "",
-    angin: "",
-    terbit: "",
-    terbenam: "",
-    cuaca: "-",
-    daily: "",
-    labels: "",
-    dailySuhu: "",
-  });
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    if (!lokasi || lokasi === "") return;
-    getData();
-    setLokDis(lokasi);
-  };
-
   const getData = async () => {
     try {
       const data = await getWeather(lokasi);
@@ -87,38 +76,27 @@ function App() {
       console.log(err);
     }
   };
-
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (lokasi !== "") {
+      getData();
+      setLokDis(lokasi);
+    }
+  };
   return (
-    <div className="container">
-      <div className="wrap">
-        <div className="wrap_kiri">
-          <div className="cari">
-            <form action="" onSubmit={onSubmit}>
-              <IconButton type="submit" onClick={onSubmit}>
-                <LocationSearchingRoundedIcon />
-              </IconButton>
-              <input
-                type="text"
-                placeholder="Cari Kota..."
-                value={lokasi}
-                onChange={(e) => setLokasi(e.target.value)}
-              />
-            </form>
-          </div>
+    <div className="cuaca">
+      <div className="cuaca__container">
+        <div className="cuaca__container__pertama">
+          <Search lokasi={lokasi} setLokasi={setLokasi} onSubmit={onSubmit} />
           <h1>{lokDis ? lokDis : "-"}</h1>
           <p>{buatTanggal(new Date())}</p>
-          <div className="cuaca">
-            <div className="gambar__cuaca">
-              <img src={getImgSrc(info.cuaca)} alt="" loading="lazy" />
-            </div>
-            <InfoCuaca props={info} />
-          </div>
+          <InfoCuaca props={info} />
         </div>
-        <div className="wrap_kanan">
-          <div className="chart">
+        <div className="cuaca__container__kedua">
+          <div className="cuaca__chart">
             <Chart labels={info.labels} suhu={info.dailySuhu} />
           </div>
-          <div className="cuaca__lainHari">
+          <div className="cuaca__hari">
             {info.daily
               ? info.daily.map((d, index) => {
                   return <Card key={index} props={d} />;

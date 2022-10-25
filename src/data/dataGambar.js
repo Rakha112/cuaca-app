@@ -1,10 +1,10 @@
-import cloud from "../3d weather icons/sun/27.png";
-import clear from "../3d weather icons/sun/26.png";
-import rain from "../3d weather icons/cloud/7.png";
-import thunder from "../3d weather icons/cloud/17.png";
-import snow from "../3d weather icons/cloud/23.png";
-import mist from "../3d weather icons/sun/4.png";
-import haze from "../3d weather icons/sun/4.png";
+import cloud from "../icons/3d weather icons/sun/27.png";
+import clear from "../icons/3d weather icons/sun/26.png";
+import rain from "../icons/3d weather icons/cloud/7.png";
+import thunder from "../icons/3d weather icons/cloud/17.png";
+import snow from "../icons/3d weather icons/cloud/23.png";
+import mist from "../icons/3d weather icons/sun/4.png";
+import haze from "../icons/3d weather icons/sun/4.png";
 
 const gambar = [
   {

@@ -1,0 +1,2 @@
+.search{align-items:center;background-color:var(--warna-putih);border-radius:50px;display:flex;justify-content:left;margin-top:3rem;width:300px}@media screen and (min-width:64rem){.search{margin-top:1rem}}.search input{border:none;border-radius:50px;padding:10px 50px 10px 5px}@media screen and (min-width:64rem){.search input{border:none;border-radius:50px;padding:10px 70px 10px 5px}}
+/*# sourceMappingURL=search.css.map */
