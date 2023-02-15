@@ -1,6 +1,6 @@
 import axios from "axios";
-const API_KEY = "ea6a3ea8ea54930d997f4fdf132e82ff";
-const URL = "https://api.openweathermap.org/data/2.5";
+const API_KEY = process.env.REACT_APP_API_KEY;
+const URL = process.env.REACT_APP_API_URL;
 
 export const getWeather = (kota) => {
   return axios
