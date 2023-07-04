@@ -3,31 +3,38 @@ name: ci
 on:
   push:
     branches:
-      - 'master'
+      - "master"
 
 jobs:
-  docker:
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v3
-      -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      -
-        name: Login to Docker Hub
-        uses: docker/login-action@v2
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v0.1.10
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          push: true
-          tags: rakha112/cuaca-client:latest
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          timeout: 10m
+          script: |
+            echo "Check Folder"
+            ls
+
+            echo "CD to project/cuaca-client"
+            cd project/cuaca-client
+
+            echo "Git Pull"
+            git pull
+
+            echo "CD to project"
+            cd ../
+
+            echo "Docker Compose Build"
+            docker compose build --no-cache cuaca-client
+
+            echo "Docker Compose up"
+            docker compose up -d
+
+            echo "Docker system prune"
+            docker system prune -f
