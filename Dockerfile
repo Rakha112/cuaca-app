@@ -1,26 +1,16 @@
-# 1. Install
-FROM node:alpine AS install
+# 1. For build React app
+FROM node:alpine as build
 
 # Set working directory
 WORKDIR /app
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+# Copy all package.json
+COPY package*.json ./
 
-COPY package.json /app/package.json
+# Same as npm install
+RUN npm install
 
-COPY package-lock.json /app/package-lock.json
-
-RUN npm ci --no-audit
-
-# 2. Build
-FROM node:alpine as build
-
-COPY --from=install /app/node_modules/ /app/node_modules
-
-WORKDIR /app
-
-COPY . /app
+COPY . .
 
 ARG REACT_APP_API_URL
 
@@ -31,3 +21,10 @@ ENV REACT_APP_API_URL=$REACT_APP_API_URL
 ENV REACT_APP_API_KEY=$REACT_APP_API_KEY
 
 RUN npm run build
+
+# # 2. Copy only the build folder
+FROM node:alpine as final
+
+WORKDIR /app
+
+COPY --from=build /app/build /app/build
