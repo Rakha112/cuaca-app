@@ -25,6 +25,14 @@ RUN npm run build
 # # 2. Copy only the build folder
 FROM node:alpine as final
 
+ARG REACT_APP_API_URL
+
+ARG REACT_APP_API_KEY
+
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
+
+ENV REACT_APP_API_KEY=$REACT_APP_API_KEY
+
 WORKDIR /app
 
 COPY --from=build /app/build /app/build

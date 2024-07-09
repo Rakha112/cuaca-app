@@ -1,40 +1,50 @@
-name: ci
+name: CI/CD
 
 on:
   push:
     branches:
-      - "master"
+      - main
 
 jobs:
-  build:
-    name: Build
+  build-and-push:
     runs-on: ubuntu-latest
+
     steps:
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v0.1.10
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          timeout: 10m
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Sanitize repo slug
+        uses: actions/github-script@v7
+        id: repo_slug
+        with:
+          result-encoding: string
+          script: return 'ghcr.io/${{ github.repository }}'.toLowerCase()
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5.3.0
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.repo_slug.outputs.result }}:latest
+          build-args: |
+            REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}
+            REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}
+
+      - name: Connect to DigitalOcean server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DIGITALOCEAN_HOST }}
+          username: ${{ secrets.DIGITALOCEAN_USERNAME }}
+          password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
           script: |
-            echo "Check Folder"
-            ls
-
-            echo "CD to project/cuaca-client"
-            cd project/cuaca-client
-
-            echo "Git Pull"
-            git pull
-
-            echo "CD to project"
-            cd ../
-
-            echo "Docker Compose Build"
-            docker compose build --no-cache cuaca-client
-
-            echo "Docker Compose up"
-            docker compose up -d
-
-            echo "Docker system prune"
+            docker compose up --pull always -d catetin-client
             docker system prune -f
