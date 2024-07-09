@@ -3,7 +3,7 @@ name: CI/CD
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-push:
@@ -46,5 +46,5 @@ jobs:
           username: ${{ secrets.DIGITALOCEAN_USERNAME }}
           password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
           script: |
-            docker compose up --pull always -d catetin-client
+            docker compose up --pull always -d cuaca-client
             docker system prune -f
